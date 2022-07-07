@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const {
-  userTypes: { admin, student, company },
+  userTypes: { admin, student, recruiter },
 } = require("../utils/constants");
 
 const userSchema = new mongoose.Schema({
@@ -26,7 +26,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: student,
     enum: {
-      values: [student, company, admin],
+      values: [admin, student, recruiter],
     },
   },
   jobsApplied: {

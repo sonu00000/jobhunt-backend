@@ -2,6 +2,10 @@ module.exports = {
   userTypes: {
     admin: "ADMIN",
     student: "STUDENT",
-    company: "COMPANY",
+    recruiter: "RECRUITER",
+  },
+  jobStatuses: {
+    active: "ACTIVE",
+    expired: "EXPIRED",
   },
 };
