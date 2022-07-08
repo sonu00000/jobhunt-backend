@@ -13,9 +13,11 @@ app.use(express.urlencoded({ extended: true }));
 
 const authRouter = require("./routes/auth.routes");
 const companyRouter = require("./routes/companies.routes");
+const jobsRouter = require("./routes/jobs.routes");
 
 app.use("/jobhunt/api/v1/auth", authRouter);
 app.use("/jobhunt/api/v1/companies", companyRouter);
+app.use("/jobhunt/api/v1/jobs", jobsRouter);
 
 const init = async () => {
   //check if admin user is already created
