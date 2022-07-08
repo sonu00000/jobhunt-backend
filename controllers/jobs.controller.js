@@ -1,7 +1,7 @@
 const Job = require("../models/job.model");
 const Company = require("../models/company.model");
 const User = require("../models/user.model");
-const { userTypes } = require("../utils/constants");
+const { userTypes, jobStatuses } = require("../utils/constants");
 
 const createJob = async (req, res) => {
   try {
@@ -91,12 +91,18 @@ const updateJob = async (req, res) => {
   }
 };
 
+/** This function will be called from updateJob controller when a user applies for a job */
 const applyJob = async (req, res, user, job) => {
   //allow only students to apply to jobs
   if (user.userType !== userTypes.student) {
     return res
       .status(200)
       .json({ success: false, message: `Only Students can apply to job` });
+  }
+  if (job.status === jobStatuses.expired) {
+    return res
+      .status(200)
+      .json({ success: false, message: `Sorry, this job posting has expired` });
   }
   //update the corresponding user and job object to include the changes in the arrays
   user.jobsApplied.push(user._id);
