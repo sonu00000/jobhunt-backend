@@ -11,6 +11,10 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+const authRouter = require("./routes/auth.routes");
+
+app.use("/jobhunt/api/v1/auth", authRouter);
+
 const init = async () => {
   //check if admin user is already created
   try {
